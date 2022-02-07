@@ -5,6 +5,10 @@ const cors = require('cors');
 
 const db = require('./db');
 const itemRouter = require('./routes/item-router');
+const patientRouter = require('./routes/patient-router');
+const examsRouter = require('./routes/exams-router');
+
+
 
 const app = express();
 const apiPort = 3000;
