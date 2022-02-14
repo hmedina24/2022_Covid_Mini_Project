@@ -1,4 +1,4 @@
-const express = require('exoress');
+const express = require('express');
 
 const PatientController = require('.../controllers/patient-controller');
 

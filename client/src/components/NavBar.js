@@ -38,6 +38,11 @@ const navBarItems = [
     className: 'nav-link',
   },*/
   {
+    name: 'Admin',
+    toPathname: '/admin',
+    className: 'nav-link',
+  },
+  {
     name: 'Create Item',
     toPathname: '/item/create',
     className: 'nav-link',
