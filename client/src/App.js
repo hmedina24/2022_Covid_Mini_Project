@@ -29,7 +29,7 @@ class App extends Component {
         <Route exact path={`${routes.ITEMS}/items-plain`} component={Items} />
         <Route exact path={`${routes.ITEMS}/react-table-v6`} component={Items} />
         <Route exact path={routes.ITEM_INSERT} component={ItemInsert} />
-        <Route exaxt path={routes.EXAMS} component={Exams} />
+        <Route exact path={routes.EXAMS} component={Exams} />
       </Switch>
     );
 
