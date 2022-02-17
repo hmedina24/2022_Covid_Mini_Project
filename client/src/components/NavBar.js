@@ -42,6 +42,11 @@ const navBarItems = [
     toPathname: '/item/create',
     className: 'nav-link',
   },
+  {
+    name: 'Exams',
+    toPathname: '/item/exams',
+    className: 'nav-link',
+  },
 ];
 
 class NavBar extends Component {
