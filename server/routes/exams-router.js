@@ -1,9 +1,13 @@
 const express = require('express');
 
-const ExamsController = require('.../controller/exams-controller');
+const ExamsController = require('../controllers/exams-controller');
 
 const router = express.Router();
 
-/*route should be updated*/
+router.get('/exams', ExamsController.getExams);
+router.get('/exam/:id', ExamsController.getExamById);
+router.post('/exam', ExamsController.createExam);
+router.put('/exam/:id', ExamsController.updateExam);
+router.delete('/exam/:id', ExamsController.deleteExam);
 
 module.exports = router;

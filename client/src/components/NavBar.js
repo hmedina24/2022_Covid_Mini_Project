@@ -27,7 +27,7 @@ const navBarItems = [
     toPathname: '/items',
     className: 'nav-link',
   },
-  /*{
+  {
     name: 'Patients',
     toPathName: '/patients',
     className: 'nav-link',
@@ -36,7 +36,7 @@ const navBarItems = [
     name: 'Exams',
     toPathName: '/exams',
     className: 'nav-link',
-  },*/
+  },
   {
     name: 'Create Item',
     toPathname: '/item/create',
