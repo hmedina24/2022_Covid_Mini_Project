@@ -1,4 +1,4 @@
-const express = require('exoress');
+const express = require('express');
 
 const PatientController = require('.../controllers/patient-controller');
 
@@ -6,4 +6,4 @@ const router = express.Router();
 
 /*route should be updated*/
 
-mondule.exports = router;
+module.exports = router;

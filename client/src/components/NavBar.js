@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+//import {  BrowserRouter as Router,  Routes,  Route} from "react-router-dom";
 
 import Links from './Links';
 
@@ -23,22 +24,27 @@ const Nav = styled.nav.attrs({
 
 const navBarItems = [
   {
-    name: 'Items',
+    name: 'Home Page',
     toPathname: '/items',
     className: 'nav-link',
   },
-  /*{
+  {
     name: 'Patients',
-    toPathName: '/patients',
+    toPathname: '/patients',
     className: 'nav-link',
   },
   {
     name: 'Exams',
-    toPathName: '/exams',
+    toPathname: '/exams',
+    className: 'nav-link',
+  },
+  /*{
+    name:'Admin',
+    toPathname: '/admin',
     className: 'nav-link',
   },*/
   {
-    name: 'Create Item',
+    name: 'Create Patient',
     toPathname: '/item/create',
     className: 'nav-link',
   },
