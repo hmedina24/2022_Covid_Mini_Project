@@ -15,11 +15,7 @@ import './styles/App.css';
 import { NavBar, Welcome } from './components';
 
 // Pages
-<<<<<<< HEAD
 import { ItemInsert, Items, ItemUpdate, Admin } from './pages';
-=======
-import { ItemInsert, Items, ItemUpdate, Patients, Exams } from './pages';
->>>>>>> 7e99ed318aacf669149f973996813ac07c9a0f13
 
 class App extends Component {
   render() {
@@ -35,12 +31,7 @@ class App extends Component {
         <Route exact path={`${routes.ITEMS}/items-plain`} component={Items} />
         <Route exact path={`${routes.ITEMS}/react-table-v6`} component={Items} />
         <Route exact path={routes.ITEM_INSERT} component={ItemInsert} />
-<<<<<<< HEAD
         <Route exact path={routes.Admin} component={Admin} />
-=======
-        <Route exact path={routes.PATIENTS} component={Patients} />
-        <Route exact path={routes.EXAMS} component={Exams} />
->>>>>>> 7e99ed318aacf669149f973996813ac07c9a0f13
       </Switch>
     );
 
