@@ -16,12 +16,8 @@ export const getItemById = id => api.get(`/item/${id}`);
 export const insertItem = payload => api.post(`/item`, payload);
 export const updateItemById = (id, payload) => api.put(`/item/${id}`, payload);
 export const deleteItemById = id => api.delete(`/item/${id}`);
-<<<<<<< HEAD
-export const getAdmin = payload => api.get(`/admin`, payload);
-=======
 export const getAllPatients = payload => api.get('/patients', payload);
 export const getAllExams = payload => api.get('/exams', payload);
->>>>>>> 7e99ed318aacf669149f973996813ac07c9a0f13
 
 const apis = {
   getAllItems,
@@ -29,12 +25,8 @@ const apis = {
   insertItem,
   updateItemById,
   deleteItemById,
-<<<<<<< HEAD
-  getAdmin
-=======
   getAllPatients,
   getAllExams
->>>>>>> 7e99ed318aacf669149f973996813ac07c9a0f13
 };
 
 export default apis;
