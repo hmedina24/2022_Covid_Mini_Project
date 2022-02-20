@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ReactTable from 'react-router-dom';
-import { DeleteButton } from '../components/buttons';
+import { Route, Switch } from 'react-router-dom';
 import api from '../api';
 
+import { routes } from '../constants';
+
+import { Button } from '@material-ui/core';
 import styled from 'styled-components';
 
-import 'react-table-6/react-table.css';
+import { ItemsList, ItemsPlain, ItemsTable } from '../pages';
 
-const Wrapper = styled.div`
-padding: 0 40px 40px 40px;
+const LinksGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(10, 1fr [col-start]);
+  margin-bottom: 1em;
+  min-height: 30px;
+  padding: 1em;
+  width: 100%;
 `;
 
 const LinkGridWrapper = styled.div``;

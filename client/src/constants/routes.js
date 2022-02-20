@@ -4,7 +4,6 @@ const ABOUT = '/about';
 const SIGN_UP = '/signup';
 const LOG_IN = '/login';
 
-
 // Post routes
 const ITEMS = '/items';
 const ITEM = '/item/:id';
