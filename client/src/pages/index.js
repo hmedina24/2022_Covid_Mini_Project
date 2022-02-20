@@ -5,6 +5,8 @@ import ItemsPlain from './ItemsPlain';
 import ItemsTable from './ItemsTable';
 import ItemUpdate from './ItemUpdate';
 import Admin from './Admin';
+import Exams from './Exams';
+import Patients from './Patients';
 
 export {
     ItemInsert,
@@ -13,5 +15,7 @@ export {
     ItemsPlain,
     ItemsTable,
     ItemUpdate,
-    Admin
+    Admin,
+    Patients,
+    Exams,
 };

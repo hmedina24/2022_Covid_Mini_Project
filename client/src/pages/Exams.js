@@ -27,7 +27,7 @@ class Exams extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      exams: {}.
+      exams: {}
     };
   }
   componentDidMount() {
@@ -55,18 +55,18 @@ class Exams extends Component {
 
   deleteSingleExam = examId => {
     return api
-    .deleteItemById(itemId)
+    .deleteItemById(examId)
     .then(resp => {
       console.log('deleteExamById: resp');
-      console.log(err);
-      return err;
+      //console.log(err);
+      //return err;
     });
   };
 
   handleRemoveExam = data => {
     const examId = data
 
-    this.deleteSingleExam(itemId).then(resp => {
+    this.deleteSingleExam(examId).then(resp => {
       console.log('handleRemoveExam: resp');
       console.log(resp);
       this.fetchAllExams();
@@ -74,8 +74,8 @@ class Exams extends Component {
   };
 
   render() {
-    const eams = this.state.items || {};
-    console.log(items);
+    const exams = this.state.items || {};
+    console.log(exams);
     const columns = [
       {
         Header: 'Patient ID',
