@@ -29,7 +29,7 @@ const navBarItems = [
   },
   {
     name: 'Patients',
-    toPathName: '/patients',
+    toPathname: '/patients',
     className: 'nav-link',
   },
   {
