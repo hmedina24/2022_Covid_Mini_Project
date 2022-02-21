@@ -10,8 +10,8 @@ const ITEM = '/item/:id';
 const ITEM_INSERT = '/item/create';
 const ITEM_UPDATE = '/item/update/:id';
 const ADMIN = '/admin';
-const PATIENTS =  '/patients';
-const EXAMS = '/exams';
+const EXAMS = '/item/exams';
+const PATIENTS = '/patients';
 
 export const routes = {
   HOME,
@@ -23,6 +23,6 @@ export const routes = {
   ITEM_INSERT,
   ITEM_UPDATE,
   ADMIN,
-  PATIENTS,
-  EXAMS
+  EXAMS,
+  PATIENTS
 };
