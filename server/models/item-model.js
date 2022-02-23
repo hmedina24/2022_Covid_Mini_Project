@@ -53,6 +53,12 @@ const Patient = new Schema(
     },
     {timestamps: true},
 );
+
+const Admin = new Schema(
+    {
+    
+    }
+)
 /*const Exam = new Schema(
     {
         name:{
