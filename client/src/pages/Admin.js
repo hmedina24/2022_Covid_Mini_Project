@@ -170,4 +170,4 @@ class Admin extends Component {
   }
 }
 
-export default ItemsList;
+export default Admin;

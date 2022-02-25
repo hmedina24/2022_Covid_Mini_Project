@@ -54,21 +54,38 @@ const Patient = new Schema(
     {timestamps: true},
 );
 
-const Admin = new Schema(
+/*const Admin = new Schema(
     {
     
     }
-)
-/*const Exam = new Schema(
+)*/
+const Image = new Schema(
     {
-        name:{
-            type: string
+        patiend_Id:{
+            type: String,
+            require: true
 
         },
-    }
+        exam_Id:{
+            type: String,
+            require: true
+
+        },
+        png_filename:{
+            type: String,
+            require: true
+
+        },
+        key_findings:{
+            type: String,
+            require: true
+
+        },
+    },
     {timestamps: true},
-);*/
+    
+);
 
 module.exports = mongoose.model('item', Item);
 module.exports = mongoose.model('patient', Patient);
-//module.exports = mongoose.model('exam', Exam);
+module.exports = mongoose.model('image', Image);
