@@ -41,7 +41,7 @@ const Table = ({ columns, data }) => {
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <TableRow data-row-item-id={row.values._id} {...row.getRowProps()}>
+            <TableRow data-row-patient-id={row.values._id} {...row.getRowProps()}>
               {row.cells.map(cell => {
                 return (
                   <TableCell {...cell.getCellProps()}>
@@ -61,36 +61,36 @@ class Patients extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: {},
+      patients: {},
     };
   }
 
   componentDidMount() {
-    console.log('ItemsList: props');
+    console.log('PatientsList: props');
     console.log(this.props);
 
-    this.fetchAllItems();
+    this.fetchAllPatients();
   }
 
-  fetchAllItems = () => {
+  fetchAllPatients = () => {
     api
-      .getAllItems()
+      .getAllPatients()
       .then(resp => {
-        const { items } = resp.data;
-        console.log('getAllItems: resp');
-        console.log(items);
-        this.setState({ items });
+        const { patients } = resp.data;
+        console.log('getAllPatients: resp');
+        console.log(patients);
+        this.setState({ patients });
       })
       .catch(err => {
-        console.error(`ERROR in 'getAllItems': ${err}`);
+        console.error(`ERROR in 'getAllPatients': ${err}`);
         console.error(err);
         return err;
       });
   };
 
-  deleteSingleItem = itemId => {
+  deleteSingleItem = patientId => {
     return api
-      .deleteItemById(itemId)
+      .deleteItemById(patientId)
       .then(resp => {
         console.log('deleteItemById: resp');
         console.log(resp);
@@ -104,18 +104,18 @@ class Patients extends Component {
   };
 
   handleRemoveItem = data => {
-    const itemId = data;
+    const patientId = data;
 
-    this.deleteSingleItem(itemId).then(resp => {
+    this.deleteSingleItem(patientId).then(resp => {
       console.log('handleRemoveItem: resp');
       console.log(resp);
-      this.fetchAllItems();
+      this.fetchAllPatients();
     });
   };
 
   render() {
-    const items = this.state.items || {};
-    console.log(items);
+    const patients = this.state.patients || {};
+    console.log(patients);
 
     const columns = [
       {
@@ -125,7 +125,7 @@ class Patients extends Component {
         Cell: props => {
           console.log(props);
           const { original } = props.cell.row;
-          return <span data-item-id={original.PATIENT_ID}>{props.value}</span>;
+          return <span data-patient-id={original.PATIENT_ID}>{props.value}</span>;
         },
       },
       {
@@ -170,7 +170,7 @@ class Patients extends Component {
           const { original } = props.cell.row;
 
           return (
-            <Link data-update-id={original._id} to={`/item/update/${original._id}`}>
+            <Link data-update-id={original._id} to={`/patient/update/${original._id}`}>
               Update
             </Link>
           );
@@ -193,10 +193,10 @@ class Patients extends Component {
     return (
       <Wrapper>
         <CssBaseline />
-        {(items || []).length > 0 ? (
-          <Table data={items} columns={columns} />
+        {(patients || []).length > 0 ? (
+          <Table data={patients} columns={columns} />
         ) : (
-          `No items to render... :(`
+          `No patients to render... :(`
         )}
       </Wrapper>
     );

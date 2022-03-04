@@ -28,7 +28,31 @@ const Item = new Schema(
     { timestamps: true },
 );
 
-
+const Patient = new Schema(
+    {
+        PATIENT_ID:{
+            type: String,
+            required: true
+        },
+        AGE:{
+            type: Number,
+            required: true
+        },
+        SEX:{
+            type: String,
+            required: true
+        },
+        RACE:{
+            type: String,
+            required: true
+        },
+        ZIP:{
+            type: Number,
+            required: true
+        },
+    },
+    {timestamps: true},
+);
 
 /*const Admin = new Schema(
     {
@@ -63,4 +87,5 @@ const Image = new Schema(
 );
 
 module.exports = mongoose.model('item', Item);
+module.exports = mongoose.model('patient', Patient);
 module.exports = mongoose.model('image', Image);

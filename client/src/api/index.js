@@ -12,6 +12,7 @@ const api = axios.create({
 // TODO - use interceptors for better error handling: https://masteringjs.io/tutorials/axios/interceptors#error-handling
 
 export const getAllItems = payload => api.get(`/items`, payload);
+export const getAllPatients = payload => api.get(`/patients`, payload);
 export const getItemById = id => api.get(`/item/${id}`);
 export const insertItem = payload => api.post(`/item`, payload);
 export const updateItemById = (id, payload) => api.put(`/item/${id}`, payload);
@@ -20,6 +21,7 @@ export const getAdmin = payload => api.get(`/admin`, payload);
 
 const apis = {
   getAllItems,
+  getAllPatients,
   getItemById,
   insertItem,
   updateItemById,
