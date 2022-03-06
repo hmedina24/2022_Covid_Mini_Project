@@ -119,9 +119,9 @@ class Patients extends Component {
 
     const columns = [
       {
-        Header: 'Patient ID',
+        Header: 'PATIENT_ID',
         accessor: 'PATIENT_ID',
-        // filterable: true,
+        filterable: true,
         Cell: props => {
           console.log(props);
           const { original } = props.cell.row;
@@ -129,21 +129,21 @@ class Patients extends Component {
         },
       },
       {
-        Header: 'Name',
-        accessor: 'NAME',
-        // filterable: true,
+        Header: 'AGE',
+        accessor: 'AGE',
+        filterable: true,
         Cell: props => {
           const { original } = props.cell.row;
-          return <span data-name={original.NAME}>{props.value}</span>;
+          return <span data-name={original.age}>{props.value}</span>;
         },
       },
       {
-      Header: 'Age',
-      accessor: 'AGE',
+      Header: 'SEX',
+      accessor: 'SEX',
       // filterable: true,
       Cell: props => {
           const { original } = props.cell.row;
-          return <span data-name={original.AGE}>{props.value}</span>;
+          return <span data-name={original.SEX}>{props.value}</span>;
         },
       },
       {

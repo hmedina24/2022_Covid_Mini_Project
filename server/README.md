@@ -78,3 +78,6 @@ _(Note: this is running the `server` command defined in `server/package.json`.)_
 
 ## References
 - [How to create your first MERN (MongoDB, Express JS, React JS and Node JS) Stack](https://medium.com/swlh/how-to-create-your-first-mern-mongodb-express-js-react-js-and-node-js-stack-7e8b20463e66)
+
+-  curl localhost:3000/api/my-endpoint
+{"test":true}
