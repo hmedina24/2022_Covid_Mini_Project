@@ -16,6 +16,7 @@ export const getItemById = id => api.get(`/item/${id}`);
 export const insertItem = payload => api.post(`/item`, payload);
 export const updateItemById = (id, payload) => api.put(`/item/${id}`, payload);
 export const deleteItemById = id => api.delete(`/item/${id}`);
+export const getAdmin = payload => api.get(`/admin`, payload);
 
 const apis = {
   getAllItems,
@@ -23,6 +24,7 @@ const apis = {
   insertItem,
   updateItemById,
   deleteItemById,
+  getAdmin
 };
 
 export default apis;

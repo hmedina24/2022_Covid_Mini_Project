@@ -6,4 +6,4 @@ const router = express.Router();
 
 /*route should be updated*/
 
-mondule.exports = router;
+module.exports = router;

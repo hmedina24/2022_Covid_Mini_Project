@@ -84,7 +84,7 @@ class ItemsList extends Component {
         },
       },
       {
-        Header: 'Name',
+        Header: 'Patient ID',
         accessor: 'name',
         filterable: true,
         Cell: props => {
