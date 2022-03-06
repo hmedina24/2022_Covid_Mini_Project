@@ -14,5 +14,3 @@ const Patient = new Schema(
 );
 
 module.exports = mongoose.model('patient', Patient);
-
-
