@@ -11,7 +11,7 @@ const ITEM_INSERT = '/item/create';
 const ITEM_UPDATE = '/item/update/:id';
 const ADMIN = '/admin';
 const EXAMS = '/item/exams';
-const PATIENTS = '/item/patients';
+const PATIENTS = '/patients';
 
 export const routes = {
   HOME,
