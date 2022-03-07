@@ -42,7 +42,7 @@ const Table = ({ columns, data }) => {
         {rows.map((row, i) => {
           prepareRow(row);
           return (
-            <TableRow data-row-item-id={row.values._id} {...row.getRowProps()}>
+            <TableRow data-row-exam-id={row.values._id} {...row.getRowProps()}>
               {row.cells.map(cell => {
                 return (
                   <TableCell {...cell.getCellProps()}>
@@ -62,61 +62,61 @@ class Exams extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: {},
+      exams: {},
     };
   }
 
   componentDidMount() {
-    console.log('ItemsList: props');
+    console.log('ExamsList: props');
     console.log(this.props);
 
-    this.fetchAllItems();
+    this.fetchAllExams();
   }
 
-  fetchAllItems = () => {
+  fetchAllExams = () => {
     api
-      .getAllItems()
+      .getAllExams()
       .then(resp => {
-        const { items } = resp.data;
-        console.log('getAllItems: resp');
-        console.log(items);
-        this.setState({ items });
+        const { exams } = resp.data;
+        console.log('getAllExams: resp');
+        console.log(exams);
+        this.setState({ exams });
       })
       .catch(err => {
-        console.error(`ERROR in 'getAllItems': ${err}`);
+        console.error(`ERROR in 'getAllExams': ${err}`);
         console.error(err);
         return err;
       });
   };
 
-  deleteSingleItem = itemId => {
+  deleteSingleExam = examId => {
     return api
-      .deleteItemById(itemId)
+      .deleteExamById(examId)
       .then(resp => {
-        console.log('deleteItemById: resp');
+        console.log('deleteExamById: resp');
         console.log(resp);
         return resp;
       })
       .catch(err => {
-        console.error(`ERROR in 'deleteSingleItem': ${err}`);
+        console.error(`ERROR in 'deleteSingleExam': ${err}`);
         console.error(err);
         return err;
       });
   };
 
-  handleRemoveItem = data => {
-    const itemId = data;
+  handleRemoveExam = data => {
+    const examId = data;
 
-    this.deleteSingleItem(itemId).then(resp => {
-      console.log('handleRemoveItem: resp');
+    this.deleteSingleExam(examId).then(resp => {
+      console.log('handleRemoveExam: resp');
       console.log(resp);
-      this.fetchAllItems();
+      this.fetchAllExams();
     });
   };
 
   render() {
-    const items = this.state.items || {};
-    console.log(items);
+    const exams = this.state.exams || {};
+    console.log(exams);
 
     const columns = [
       {
@@ -126,7 +126,7 @@ class Exams extends Component {
         Cell: props => {
           console.log(props);
           const { original } = props.cell.row;
-          return <span data-item-id={original.patient_Id}>{props.value}</span>;
+          return <span data-exam-id={original.patient_Id}>{props.value}</span>;
         },
       },
       {
@@ -173,7 +173,7 @@ class Exams extends Component {
           const { original } = props.cell.row;
 
           return (
-            <Link data-update-id={original._id} to={`/item/update/${original._id}`}>
+            <Link data-update-id={original._id} to={`/exam/update/${original._id}`}>
               Update
             </Link>
           );
@@ -186,7 +186,7 @@ class Exams extends Component {
           const { original } = props.cell.row;
           return (
             <span data-delete-id={original._id}>
-              <DeleteButton id={original._id} onDelete={this.handleRemoveItem} />
+              <DeleteButton id={original._id} onDelete={this.handleRemoveExam} />
             </span>
           );
         },
@@ -196,10 +196,10 @@ class Exams extends Component {
     return (
       <Wrapper>
         <CssBaseline />
-        {(items || []).length > 0 ? (
-          <Table data={items} columns={columns} />
+        {(exams || []).length > 0 ? (
+          <Table data={exams} columns={columns} />
         ) : (
-          `No items to render... :(`
+          `No exams to render... :(`
         )}
       </Wrapper>
     );
