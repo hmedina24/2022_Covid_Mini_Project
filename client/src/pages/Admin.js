@@ -16,63 +16,63 @@ class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: {},
+      exams: {},
     };
   }
 
   componentDidMount() {
-    console.log('ItemsList: props');
+    console.log('ExamsList: props');
     console.log(this.props);
-    // if (((this.props.itemData || {}).items || []).length) return;
+    // if (((this.props.examData || {}).exams || []).length) return;
 
-    this.fetchAllItems();
+    this.fetchAllExams();
   }
 
-  fetchAllItems = () => {
+  fetchAllExams = () => {
     api
-      .getAllItems()
+      .getAdmin()
       .then(resp => {
         debugger;
-        const { items } = resp.data;
-        console.log('getAllItems: resp');
-        console.log(items);
-        this.setState({ items });
+        const { exams } = resp.data;
+        console.log('getAllExams: resp');
+        console.log(exams);
+        this.setState({ exams });
       })
       .catch(err => {
-        console.error(`ERROR in 'getAllItems': ${err}`);
+        console.error(`ERROR in 'getAllExams': ${err}`);
         console.error(err);
         return err;
       });
   };
 
-  deleteSingleItem = itemId => {
+  deleteSingleExam = examId => {
     return api
-      .deleteItemById(itemId)
+      .deleteExamById(examId)
       .then(resp => {
-        console.log('deleteItemById: resp');
+        console.log('deleteExamById: resp');
         console.log(resp);
         return resp;
       })
       .catch(err => {
-        console.error(`ERROR in 'deleteSingleItem': ${err}`);
+        console.error(`ERROR in 'deleteSingleExam': ${err}`);
         console.error(err);
         return err;
       });
   };
 
-  handleRemoveItem = data => {
-    const itemId = data;
+  handleRemoveExam = data => {
+    const examId = data;
 
-    this.deleteSingleItem(itemId).then(resp => {
-      console.log('handleRemoveItem: resp');
+    this.deleteSingleExam(examId).then(resp => {
+      console.log('handleRemoveExam: resp');
       console.log(resp);
-      this.fetchAllItems();
+      this.fetchAllExams();
     });
   };
 
   render() {
-    const items = this.state.items || {};
-    console.log(items);
+    const exams = this.state.exams || {};
+    console.log(exams);
 
     const columns = [
       {
@@ -85,56 +85,42 @@ class Admin extends Component {
       },
       {
         Header: 'Patient ID',
-        accessor: 'name',
+        accessor: 'patient_Id',
         filterable: true,
         Cell: props => {
-          return <span data-name={props.original.name}>{props.value}</span>;
+          return <span data-name={props.original.patient_Id}>{props.value}</span>;
         },
       },
       {
-        Header: 'Day(s)',
-        accessor: 'daysOfWeek',
+        Header: 'Exams',
+        accessor: 'exam_Id',
         filterable: true,
         Cell: props => {
-          const { daysOfWeek } = props.original;
-          let daysToDisplay = '';
-          if (daysOfWeek && typeof daysOfWeek === 'object') {
-            for (const day in daysOfWeek) {
-              daysToDisplay =
-                daysToDisplay === '' ? daysOfWeek[day] : `${daysToDisplay}, ${daysOfWeek[day]}`;
-            }
-          }
-          return (
-            <span
-              data-daysofweek={daysOfWeek && JSON.stringify(daysOfWeek)}
-              data-daysofweek-by-id={props.original._id}>
-              {daysToDisplay || '-'}
-            </span>
-          );
+          return <span data-name={props.original.exam_Id}>{props.value}</span>;
         },
       },
-      {
-        Header: 'Timeframe',
-        accessor: 'timeframeNote',
-        Cell: props => {
-          return <span data-timeframe={props.original.timeframeNote}>{props.value || '-'}</span>;
-        },
-      },
-      {
-        Header: 'Priority',
-        accessor: 'priority',
-        filterable: true,
-        Cell: props => {
-          return <span data-priority={props.original.priority}>{props.value}</span>;
-        },
-      },
+      // {
+      //   Header: 'Timeframe',
+      //   accessor: 'timeframeNote',
+      //   Cell: props => {
+      //     return <span data-timeframe={props.original.timeframeNote}>{props.value || '-'}</span>;
+      //   },
+      // },
+      // {
+      //   Header: 'Priority',
+      //   accessor: 'priority',
+      //   filterable: true,
+      //   Cell: props => {
+      //     return <span data-priority={props.original.priority}>{props.value}</span>;
+      //   },
+      // },
       {
         Header: '',
         accessor: '',
         Cell: props => {
           return (
-            <Link data-update-id={props.original._id} to={`/item/update/${props.original._id}`}>
-              Update Item
+            <Link data-update-id={props.original._id} to={`/exam/update/${props.original._id}`}>
+              Update Exam
             </Link>
           );
         },
@@ -145,7 +131,7 @@ class Admin extends Component {
         Cell: props => {
           return (
             <span data-delete-id={props.original._id}>
-              <DeleteButton id={props.original._id} onDelete={this.handleRemoveItem} />
+              <DeleteButton id={props.original._id} onDelete={this.handleRemoveExam} />
             </span>
           );
         },
@@ -154,16 +140,16 @@ class Admin extends Component {
 
     return (
       <Wrapper>
-        {(items || []).length > 0 ? ( // defeats the purpose of using `isLoading` prop?
+        {(exams || []).length > 0 ? ( // defeats the purpose of using `isLoading` prop?
           <ReactTable
-            data={items}
+            data={exams}
             columns={columns}
             defaultPageSize={10}
             showPageSizeOptions={true}
             minRows={10}
           />
         ) : (
-          `No items to render... :(`
+          `No exams to render... :(`
         )}
       </Wrapper>
     );
