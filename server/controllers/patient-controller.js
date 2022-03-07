@@ -1,201 +1,36 @@
-/* eslint-disable no-undef, arrow-body-style */
-const Patient = require('../models/patient-model');
-
-// const myFunc = async (req, res) => {
-//   return res.status(200).json({
-//     test: true
-//   })
-// }
+const Patient =  require('../models/patient-model')
 
 getPatients = async (req, res) => {
-  console.log('getPatients', "look HERE")
-  await Patient.find({}, (err, patients) => {
-    if (err) {
-      console.error(`[Hack.Diversity React Template] - 400 in 'getpatients': ${err}`);
-      return res.status(400).json({
-        success: false,
-        error: err,
-      });
-    }
-    if (!patients.length) {
-      console.error(`[Hack.Diversity React Template] - 404 in 'getpatients': patients not found`);
-      return res.status(200).json({
-        success: true,
-        patients: [],
-      });
-    }
-    console.log(`[Hack.Diversity React Template] - 200 in 'getpatients': patients fetched!`);
-    return res.status(200).json({
-      success: true,
-      patients: patients,
-    });
-  }).catch(err => {
-    console.error(`[Hack.Diversity React Template] - caught error in 'getpatients': ${err}`);
-    console.error(err);
-    return res.status(404).json({
-      success: false,
-      error: err,
-    });
-  });
+	await Patient.find({}, (err, patients) => {
+        if(err) {
+            console.error(`Hack.Diversity React Template] - 400 in 'getPatients': ${err}`);
+            return res.status(400).json({
+                success: false,
+                error: err,
+            });
+        }
+        if (!patients.length) {
+            console.error(`[Hack.Diversity React Template] - 404 in 'getPatients': Patients not found`);
+            return res.status(200).json({
+              success: true,
+              patients: [],
+            });
+          }
+          console.log(`[Hack.Diversity React Template] - 200 in 'getPatients': Patients fetched!`);
+          return res.status(200).json({
+            success: true,
+            patients: patients,
+          });
+        }).catch(err => {
+          console.error(`[Hack.Diversity React Template] - caught error in 'getPatients': ${err}`);
+          console.error(err);
+          return res.status(404).json({
+            success: false,
+            error: err,
+          });
+        });
 };
-
-// getItemById = async (req, res) => {
-//   await Item.find({ _id: req.params.id }, (err, patient) => {
-//     if (err) {
-//       console.error(`[Hack.Diversity React Template] - 400 in 'getItemById': ${err}`);
-//       throw res.status(400).json({
-//         success: false,
-//         error: err,
-//       });
-//     }
-//     if (!items.length) {
-//       console.error(`[Hack.Diversity React Template] - 404 in 'getItemById': Item not found`);
-//       return res.status(404).json({
-//         success: false,
-//         error: 'Item not found',
-//       });
-//     }
-//     console.log(`[Hack.Diversity React Template] - 200 in 'getItemById': Item fetched!`);
-//     return res.status(200).json({
-//       success: true,
-//       item: items[0],
-//     });
-//   }).catch(err => {
-//     console.error(`[Hack.Diversity React Template] - caught error in 'getItemById': ${err}`);
-//     console.error(err);
-//     return err;
-//   });
-// };
-
-// createItem = (req, res) => {
-//   const body = req.body;
-//   // console.log('----------------------- createItem: req -----------------------')
-//   // console.log(req);
-//   // console.log('----------------------- createItem: body -----------------------')
-//   // console.log(body);
-
-//   if (!body) {
-//     return res.status(400).json({
-//       success: false,
-//       error: 'You must provide an item.',
-//     });
-//   }
-
-//   const item = new Item(body);
-
-//   if (!item) {
-//     console.error(`[Hack.Diversity React Template] - 400 in 'createItem': 'item' is malformed.`);
-//     return res.status(400).json({
-//       success: false,
-//       message: "'item' is malformed",
-//     });
-//   }
-
-//   // console.log('----------------------- createItem: item -----------------------')
-//   // console.log(item);
-
-//   return item
-//     .save()
-//     .then(() => {
-//       console.error(`[Hack.Diversity React Template] - 201 in 'createItem': Item created!`);
-//       return res.status(201).json({
-//         success: true,
-//         id: item._id,
-//         message: 'Item created!',
-//       });
-//     })
-//     .catch(err => {
-//       console.error(`[Hack.Diversity React Template] - caught error in 'createItem'`);
-//       Object.keys(err.errors).forEach(errorKey => {
-//         console.error(`[Hack.Diversity React Template] ERROR for: ${errorKey}`);
-//         console.error(
-//           `[Hack.Diversity React Template] => ${
-//             ((err.errors[errorKey] || {}).properties || {}).message
-//           }`,
-//         );
-//       });
-//       return res.status(400).json({
-//         success: false,
-//         error: err.errors,
-//         message: err.errors.name,
-//       });
-//     });
-// };
-
-// updateItem = async (req, res) => {
-//   const body = req.body;
-//   if (!body) {
-//     console.error(`[Hack.Diversity React Template] - 400 in 'updateItem': You must provide an item to update.`);
-//     return res.status(400).json({
-//       success: false,
-//       error: 'You must provide an item to update.',
-//     });
-//   }
-
-//   const itemForUpdate = {
-//     _id: req.params.id,
-//     name: body.name,
-//     daysOfWeek: body.daysOfWeek,
-//     timeframeNote: body.timeframeNote,
-//     priority: body.priority,
-//     content: body.content,
-//   };
-
-//   // console.log('----------------------- updateItem: res -----------------------');
-//   // console.log(res);
-
-//   try {
-//     await Item.findOneAndUpdate({ _id: req.params.id }, itemForUpdate);
-//   } catch (err) {
-//     console.error(`[Hack.Diversity React Template] - caught error in 'updateItem': ${err}`);
-//     console.error(err);
-//     return res.status(400).json({
-//       success: false,
-//       error: err,
-//     });
-//   }
-
-//   console.log(`[Hack.Diversity React Template] - 200 in 'updateItem': Item updated!`);
-//   return res.status(200).json({
-//     success: true,
-//     id: req.params.id,
-//     message: 'Item updated!',
-//   });
-// };
-
-// deleteItem = async (req, res) => {
-//   await Item.findOneAndDelete({ _id: req.params.id }, (err, item) => {
-//     if (err) {
-//       console.error(`[Hack.Diversity React Template] - 400 in 'deleteItem': ${err}`);
-//       return res.status(400).json({
-//         succes: false,
-//         error: err,
-//       });
-//     }
-
-//     if (!item) {
-//       console.error(`[Hack.Diversity React Template] - 400 in 'deleteItem': Item not found!`);
-//       return res.status(400).json({
-//         success: false,
-//         error: 'Item not found!',
-//       });
-//     }
-
-//     return res.status(200).json({
-//       success: true,
-//       item: item,
-//     });
-//   }).catch(err => {
-//     console.error(`[Hack.Diversity React Template] - caught error in 'deleteItem': ${err}`);
-//     console.error(err);
-//     return err;
-//   });
-// };
-
 module.exports = {
-  getPatients,
-  // getItemById,
-  // createItem,
-  // updateItem,
-  // deleteItem,
-};
+    getPatients,
+}
+

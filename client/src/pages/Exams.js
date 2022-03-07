@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { useTable } from 'react-table';
 import { DeleteButton } from '../components/buttons';

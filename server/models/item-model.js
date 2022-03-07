@@ -28,39 +28,5 @@ const Item = new Schema(
     { timestamps: true },
 );
 
-
-
-/*const Admin = new Schema(
-    {
-    
-    }
-)*/
-const Image = new Schema(
-    {
-        patiend_Id:{
-            type: String,
-            require: true
-
-        },
-        exam_Id:{
-            type: String,
-            require: true
-
-        },
-        png_filename:{
-            type: String,
-            require: true
-
-        },
-        key_findings:{
-            type: String,
-            require: true
-
-        },
-    },
-    {timestamps: true},
-    
-);
-
 module.exports = mongoose.model('item', Item);
-module.exports = mongoose.model('image', Image);
+
