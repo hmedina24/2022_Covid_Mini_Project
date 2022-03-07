@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require('express')
 
-const PatientController = require('.../controllers/patient-controller');
+const PatientController = require('../controllers/patient-controller')
 
-const router = express.Router();
+const router = express.Router()
 
-/*route should be updated*/
+router.get('/patient', PatientController.getPatients);
 
-module.exports = router;
+module.exports = router

@@ -17,6 +17,7 @@ export const insertItem = payload => api.post(`/item`, payload);
 export const updateItemById = (id, payload) => api.put(`/item/${id}`, payload);
 export const deleteItemById = id => api.delete(`/item/${id}`);
 export const getAdmin = payload => api.get(`/admin`, payload);
+export const getAllPatients = payload => api.get(`/patients`, payload);
 
 const apis = {
   getAllItems,
