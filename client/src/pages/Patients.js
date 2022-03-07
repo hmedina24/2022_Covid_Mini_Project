@@ -11,6 +11,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   padding: 0 40px 40px 40px;
+
   @media screen and (max-width: 420px) {
     padding-left: 0.5em;
     padding-right: 0.5em;
@@ -65,7 +66,7 @@ class Patients extends Component {
   }
 
   componentDidMount() {
-    console.log('PatientsList: props');
+    console.log('PatientList: props');
     console.log(this.props);
 
     this.fetchAllPatients();
@@ -75,10 +76,10 @@ class Patients extends Component {
     api
       .getAllPatients()
       .then(resp => {
-        const { patients } = resp.data;
-        console.log('getAllPatients: resp');
-        console.log(patients);
-        this.setState({ patients });
+        const { patient } = resp.data;
+        console.log('getAllPatient: resp');
+        console.log(patient);
+        this.setState({ patient });
       })
       .catch(err => {
         console.error(`ERROR in 'getAllPatients': ${err}`);
@@ -89,24 +90,24 @@ class Patients extends Component {
 
   deleteSingleItem = patientId => {
     return api
-      .deleteItemById(patientId)
+      .deletePatientById(patientId)
       .then(resp => {
-        console.log('deleteItemById: resp');
+        console.log('deletePatientById: resp');
         console.log(resp);
         return resp;
       })
       .catch(err => {
-        console.error(`ERROR in 'deleteSingleItem': ${err}`);
+        console.error(`ERROR in 'deleteSinglePatient': ${err}`);
         console.error(err);
         return err;
       });
   };
 
-  handleRemoveItem = data => {
-    const patientId = data;
+  handleRemovePatient = data => {
+    const patient = data;
 
-    this.deleteSingleItem(patientId).then(resp => {
-      console.log('handleRemoveItem: resp');
+    this.deleteSingleItem(patient).then(resp => {
+      console.log('handleRemovePatient: resp');
       console.log(resp);
       this.fetchAllPatients();
     });
@@ -133,7 +134,7 @@ class Patients extends Component {
         filterable: true,
         Cell: props => {
           const { original } = props.cell.row;
-          return <span data-name={original.age}>{props.value}</span>;
+          return <span data-name={original.AGE}>{props.value}</span>;
         },
       },
       {
@@ -182,7 +183,7 @@ class Patients extends Component {
           const { original } = props.cell.row;
           return (
             <span data-delete-id={original._id}>
-              <DeleteButton id={original._id} onDelete={this.handleRemoveItem} />
+              <DeleteButton id={original._id} onDelete={this.handleRemove} />
             </span>
           );
         },
