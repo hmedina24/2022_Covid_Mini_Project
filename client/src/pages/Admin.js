@@ -30,22 +30,22 @@ class Admin extends Component {
 
   fetchAllExams = () => {
     api
-      .getAdmin()
+      .getAllAdmin()
       .then(resp => {
         debugger;
         const { exams } = resp.data;
-        console.log('getAllExams: resp');
+        console.log('getAllAdmin: resp');
         console.log(exams);
         this.setState({ exams });
       })
       .catch(err => {
-        console.error(`ERROR in 'getAllExams': ${err}`);
+        console.error(`ERROR in 'getAllAdmin': ${err}`);
         console.error(err);
         return err;
       });
   };
 
-  deleteSingleExam = examId => {
+  deleteSingleItem = examId => {
     return api
       .deleteExamById(examId)
       .then(resp => {
@@ -63,7 +63,7 @@ class Admin extends Component {
   handleRemoveExam = data => {
     const examId = data;
 
-    this.deleteSingleExam(examId).then(resp => {
+    this.deleteSingleItem(examId).then(resp => {
       console.log('handleRemoveExam: resp');
       console.log(resp);
       this.fetchAllExams();
