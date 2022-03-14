@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3000/api',
-  hostname: process.env.REEACT_APP_API_HOST || 'http://localhost:3000/',
+  hostname: process.env.REACT_APP_API_HOST || 'http://localhost:3000/',
   httpsAgent: https.Agent({
     rejectUnauthorized: false,
   }),
@@ -24,6 +24,8 @@ export const deleteItemById = id => api.delete(`/item/${id}`);
 
 const apis = {
   getAllItems,
+  getAllPatients,
+  getAllExams,
   getItemById,
   insertItem,
   updateItemById,

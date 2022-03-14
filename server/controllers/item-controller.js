@@ -1,6 +1,12 @@
 /* eslint-disable no-undef, arrow-body-style */
 const Item = require('../models/item-model');
 
+// const myFunc = async (req, res) => {
+//   return res.status(200).json({
+//     test: true
+//   })
+// }
+
 getItems = async (req, res) => {
   await Item.find({}, (err, items) => {
     if (err) {
